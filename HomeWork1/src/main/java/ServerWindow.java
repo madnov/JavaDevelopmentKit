@@ -9,10 +9,13 @@ public class ServerWindow extends JFrame {
     private static final int WIDTH = 400;
     private static final int HEIGHT = 300;
 
-    private final JButton btnStart = new JButton("Start");
-    private final JButton btnStop = new JButton("Stop");
+    private final JButton btnStart = new JButton("Start Server");
+    private final JButton btnStop = new JButton("Stop Server");
     private final JTextArea log = new JTextArea();
+    private final JLabel statusLabel = new JLabel("Server is stopped");
     private boolean isServerWorking;
+
+
 
 
     ServerWindow() {
@@ -20,6 +23,7 @@ public class ServerWindow extends JFrame {
         btnStop.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 isServerWorking = false;
+                statusLabel.setText("Server is stopped");
                 System.out.println("Server stopped " + isServerWorking + "\n");
             }
         });
@@ -27,6 +31,7 @@ public class ServerWindow extends JFrame {
         btnStart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 isServerWorking = true;
+                statusLabel.setText("Server is started");
                 System.out.println("Server started " + isServerWorking + "\n");
 
             }
@@ -37,10 +42,17 @@ public class ServerWindow extends JFrame {
         setResizable(false);
         setTitle("Chat server");
         setAlwaysOnTop(true);
-        setLayout(new GridLayout(1,2));
+        setLayout(new GridLayout(1,3));
+
+
         add(btnStart);
         add(btnStop);
+        add(statusLabel);
 
         setVisible(true);
+
+    }
+    public boolean isServerWorking(){
+        return isServerWorking;
     }
 }
