@@ -11,5 +11,8 @@ public class Main {
         System.out.println(pair2);
         System.out.println("First element: " + pair2.getFirst());
         System.out.println("Second element: " + pair2.getSecond());
+
+        RecordPair<String,Integer> pair = new RecordPair<>("Text", 100);
+        System.out.println(pair);
     }
 }
